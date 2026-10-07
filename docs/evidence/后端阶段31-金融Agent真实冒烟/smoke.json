@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "llm_mock": false,
+    "llm_model": "deepseek-chat",
+    "llm_base_url": "https://api.deepseek.com/v1",
+    "has_key": true
+  },
+  "rows": [
+    {
+      "user": "你们数字人客服能帮我做什么？",
+      "spoken_text": "您好，我是零售金融咨询指引客服，可以帮您了解账户、转账、卡片、密码、信用卡、理财说明书、网点查询和投诉等业务的办理流程和所需材料。具体账务操作需要您本人通过官方渠道办理，如果问题比较复杂或需要查询真实账户情况，我可以帮您转接人工客服。",
+      "source": "agent",
+      "agent_used": true,
+      "action_intent": "none",
+      "graphic_template_ref": "general_service_intro",
+      "suggest_transfer_human": false,
+      "elapsed_ms": 1948,
+      "structure_ok": true,
+      "likely_mock": false
+    },
+    {
+      "user": "我想先了解你们能咨询哪些业务，不要推销产品。",
+      "spoken_text": "您好，我们提供零售金融咨询指引，不推销产品。您可以咨询账户、转账、卡片、密码、信用卡、理财说明书、网点、投诉这些业务。请问您想了解哪一项？",
+      "source": "agent",
+      "agent_used": true,
+      "action_intent": "none",
+      "graphic_template_ref": "faq_scope_general",
+      "suggest_transfer_human": false,
+      "elapsed_ms": 1249,
+      "structure_ok": true,
+      "likely_mock": false
+    },
+    {
+      "user": "如果我说不清楚问题该怎么办？",
+      "spoken_text": "没关系，说不清楚也很正常。您可以先告诉我大概想办哪类事，比如账户、转账、卡片、密码、信用卡、理财说明书、网点或投诉，我再一步步帮您理清。如果涉及查具体账户或需要核实身份，我会建议您转人工客服继续处理。",
+      "source": "agent",
+      "agent_used": true,
+      "action_intent": "none",
+      "graphic_template_ref": "general_guide_card",
+      "suggest_transfer_human": false,
+      "elapsed_ms": 1228,
+      "structure_ok": true,
+      "likely_mock": false
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+[
+  {
+    "id": "branch_hours_sample_001",
+    "collection": "policy_faq",
+    "title": "演示网点营业时间",
+    "keywords": [
+      "网点",
+      "营业时间",
+      "开门",
+      "几点",
+      "周几",
+      "网点时间",
+      "营业厅"
+    ],
+    "text": "【公开演示样例·非现网】某演示网点：工作日 9:00–17:00，周六 9:00–12:00，周日休息；法定节假日与临时调整以网点门口披露为准，无法远程承诺当日是否开门。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "branch_find_sample_001",
+    "collection": "policy_faq",
+    "title": "演示怎么查网点",
+    "keywords": [
+      "查网点",
+      "附近网点",
+      "网点查询",
+      "网点在哪",
+      "网点地址",
+      "找网点",
+      "怎么查网点"
+    ],
+    "text": "【公开演示样例·非现网】可在官方 App「网点」或「附近网点」按定位／城市检索；列表展示地址与对外营业信息。本演示不返回真实定位结果。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "branch_cs_sample_001",
+    "collection": "policy_faq",
+    "title": "演示客服在线时间",
+    "keywords": [
+      "客服时间",
+      "在线客服",
+      "客服在线时间",
+      "人工客服时间"
+    ],
+    "text": "【公开演示样例·非现网】数字人咨询可先自助；人工座席演示时段为工作日 9:00–18:00（以 App 实际排队提示为准）。非服务时段请留言或次日再转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "wealth_doc_sample_001",
+    "collection": "product_manual",
+    "title": "演示理财说明书入口",
+    "keywords": [
+      "理财说明书",
+      "产品说明书",
+      "说明书",
+      "在哪看说明书",
+      "看说明书",
+      "理财"
+    ],
+    "text": "【公开演示样例·非现网】请在 App「理财／财富」进入产品详情，于资料或文件区打开产品说明书与风险揭示书。找不到入口时请转人工，切勿依据聊天截图代替正式文件。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "wealth_risk_sample_001",
+    "collection": "product_manual",
+    "title": "演示风险等级怎么看",
+    "keywords": [
+      "风险等级",
+      "风险评级",
+      "适合度",
+      "风险等级怎么看"
+    ],
+    "text": "【公开演示样例·非现网】说明书与详情页会披露产品风险等级及适合投资者类型；等级仅作分类提示，不代表涨跌或本金保障。请以您风险测评与正式文件为准。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "wealth_yield_sample_001",
+    "collection": "product_manual",
+    "title": "演示收益表述怎么理解",
+    "keywords": [
+      "收益",
+      "收益率",
+      "预期收益",
+      "理财收益",
+      "收益怎么理解",
+      "承诺收益"
+    ],
+    "text": "【公开演示样例·非现网】说明书中的业绩比较基准或过往展示不等于承诺收益，不构成保证。投资有风险，请阅读全文后再自行判断；本演示不做投资建议。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "credit_limit_sample_001",
+    "collection": "credit_faq",
+    "title": "演示怎么查信用卡额度",
+    "keywords": [
+      "查额度",
+      "信用额度",
+      "可用额度",
+      "额度多少",
+      "我的额度",
+      "看额度"
+    ],
+    "text": "【公开演示样例·非现网】可在 App「信用卡」→「卡片管理」或「我的额度」查看总额度与可用额度。本演示不返回真实额度数字，也不代客审批额度。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "credit_repay_sample_001",
+    "collection": "credit_faq",
+    "title": "演示还款日与账单怎么查",
+    "keywords": [
+      "还款日",
+      "信用卡还款",
+      "账单还款",
+      "怎么还款",
+      "查还款日",
+      "何时还款"
+    ],
+    "text": "【公开演示样例·非现网】打开 App「信用卡－账单」可查看本期还款日与应还金额，并选择最低应还或全额还款。本演示不代客还款、不承诺扣款结果。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "credit_docs_sample_001",
+    "collection": "credit_faq",
+    "title": "演示办卡申请材料",
+    "keywords": [
+      "申请材料",
+      "办卡材料",
+      "需要什么材料",
+      "准备什么资料",
+      "要交什么"
+    ],
+    "text": "【公开演示样例·非现网】申请材料以办卡页面提示为准，通常需本人有效身份证件并按页填写资料。请勿把完整身份证号、验证码发给客服；本演示不代收材料、不承诺批卡。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "credit_raise_sample_001",
+    "collection": "credit_faq",
+    "title": "演示提额审核边界",
+    "keywords": [
+      "提额",
+      "申请提额",
+      "提升额度",
+      "降额"
+    ],
+    "text": "【公开演示样例·非现网】提额请在 App「信用卡」提交申请，由银行系统审核；是否通过、调整幅度以审核为准。演示客服不能预定结果，也不能改写审核结论。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "account_balance_sample_001",
+    "collection": "account_faq",
+    "title": "演示怎么查账户余额",
+    "keywords": [
+      "查余额",
+      "看余额",
+      "账户余额",
+      "余额查询",
+      "怎么查余额"
+    ],
+    "text": "【公开演示样例·非现网】可在 App 或网银进入「账户」或「我的资产」查看余额。本演示不返回真实余额数字，也不能代替银行核心账务查询。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "account_ledger_sample_001",
+    "collection": "account_faq",
+    "title": "演示怎么查交易流水",
+    "keywords": [
+      "查流水",
+      "看流水",
+      "交易明细",
+      "账单明细",
+      "怎么查流水"
+    ],
+    "text": "【公开演示样例·非现网】可在 App「账户明细」或「交易记录」按日期筛选流水。本演示不拉取真实交易列表；找不到某笔或页面报错请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "account_mismatch_sample_001",
+    "collection": "account_faq",
+    "title": "演示余额出入核对边界",
+    "keywords": [
+      "余额对不上",
+      "金额不对",
+      "少了一笔",
+      "多扣了",
+      "流水不对"
+    ],
+    "text": "【公开演示样例·非现网】余额或流水有出入时，请先保留截图并记下时间与金额。演示客服无法查询银行核心账务，也不能当场改账，请转人工由同事核对。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "transfer_howto_sample_001",
+    "collection": "transfer_faq",
+    "title": "演示怎么转账",
+    "keywords": [
+      "怎么转账",
+      "如何转账",
+      "我想转账",
+      "我要转账",
+      "转账流程",
+      "转账怎么操作",
+      "教我转账"
+    ],
+    "text": "【公开演示样例·非现网】可在 App「转账」或「转账汇款」按页填写收款账号、户名与金额后提交。本演示不能代客发起转账，请勿发送完整账号、密码或验证码。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "transfer_fail_sample_001",
+    "collection": "transfer_faq",
+    "title": "演示转账失败怎么排查",
+    "keywords": [
+      "转账失败",
+      "转账不了",
+      "转不过去",
+      "转不出",
+      "提示失败"
+    ],
+    "text": "【公开演示样例·非现网】转账失败时可核对：余额是否充足、收款账号与户名是否正确、是否超出限额。本演示不查询真实失败原因；仍失败请保留截图转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "transfer_missing_sample_001",
+    "collection": "transfer_faq",
+    "title": "演示对方未到账怎么核对",
+    "keywords": [
+      "对方没收到",
+      "没到账",
+      "未到账",
+      "转账没到",
+      "汇款没到",
+      "钱没到"
+    ],
+    "text": "【公开演示样例·非现网】请先在账户明细确认是否已扣款，并记下交易时间与金额。演示客服无法查询银行核心到账状态，请转人工核对。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "transfer_eta_sample_001",
+    "collection": "transfer_faq",
+    "title": "演示到账时间边界",
+    "keywords": [
+      "多久能到",
+      "什么时候到",
+      "几时到账",
+      "多久到账",
+      "要多久"
+    ],
+    "text": "【公开演示样例·非现网】到账时刻以转账凭证及流水状态为准；演示客服无法查询或承诺具体到账时间。超时未到请携带凭证转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "card_bind_sample_001",
+    "collection": "card_faq",
+    "title": "演示怎么绑银行卡",
+    "keywords": [
+      "怎么绑卡",
+      "绑卡",
+      "绑定银行卡",
+      "加卡",
+      "添加银行卡"
+    ],
+    "text": "【公开演示样例·非现网】可在 App「我的」→「银行卡」或「账户管理」添加／绑定银行卡并完成验证。本演示不代客绑卡；验证失败请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "card_unbind_sample_001",
+    "collection": "card_faq",
+    "title": "演示怎么解绑银行卡",
+    "keywords": [
+      "解绑卡片",
+      "解绑卡",
+      "解绑",
+      "取消绑定"
+    ],
+    "text": "【公开演示样例·非现网】可在 App「银行卡」或「账户管理」选中卡片后解绑／解除绑定。本演示不代客解绑；无法解绑或解绑后仍有扣款请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "card_loss_sample_001",
+    "collection": "card_faq",
+    "title": "演示挂失边界",
+    "keywords": [
+      "挂失",
+      "卡片挂失",
+      "卡丢了",
+      "卡被盗",
+      "报失",
+      "挂失引导"
+    ],
+    "text": "【公开演示样例·非现网】卡片遗失或被盗时，请立即通过 App／网银官方挂失，或转人工。演示客服不能代办挂失；请勿发送完整卡号。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "auth_login_sample_001",
+    "collection": "auth_faq",
+    "title": "演示登录不上怎么排查",
+    "keywords": [
+      "登录不上",
+      "登陆不上",
+      "登不上",
+      "登录失败",
+      "登陆失败",
+      "进不去",
+      "登不进去"
+    ],
+    "text": "【公开演示样例·非现网】登录失败时可核对：账号是否正确、网络是否正常、密码输入法是否切换正确；也可改用短信验证码登录。本演示不能代客登录；请勿将密码发送给客服。仍无法进入请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "auth_password_sample_001",
+    "collection": "auth_faq",
+    "title": "演示忘记密码怎么重置",
+    "keywords": [
+      "忘记密码",
+      "找回密码",
+      "改密码",
+      "重置密码",
+      "密码忘了"
+    ],
+    "text": "【公开演示样例·非现网】请在 App 或网银登录页选择「忘记密码」或「找回密码」，按页面完成身份验证后重置。本演示不代客改密；请勿将密码发送给客服。无入口或验证失败请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "auth_otp_sample_001",
+    "collection": "auth_faq",
+    "title": "演示收不到验证码怎么排查",
+    "keywords": [
+      "收不到验证码",
+      "验证码没来",
+      "验证码收不到",
+      "没收到验证码"
+    ],
+    "text": "【公开演示样例·非现网】收不到验证码时可核对：手机号是否正确、信号是否正常、短信是否被拦截；可等待约一至两分钟后重发。本演示不能代收验证码；请勿将验证码发送给客服。仍收不到请转人工。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "complaint_account_sample_001",
+    "collection": "complaint_faq",
+    "title": "演示账户交易纠纷怎么准备材料",
+    "keywords": [
+      "乱扣款",
+      "莫名扣款",
+      "扣款不对",
+      "账户交易纠纷",
+      "账户纠纷",
+      "交易纠纷",
+      "账不对"
+    ],
+    "text": "【公开演示样例·非现网】若要对扣款或交易提出正式投诉，请先准备争议时间、金额与相关截图。演示客服不能直接改账或承诺赔付；请点转人工进入投诉核对。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "complaint_card_sample_001",
+    "collection": "complaint_faq",
+    "title": "演示卡片额度投诉边界",
+    "keywords": [
+      "卡片额度相关",
+      "信用卡纠纷",
+      "卡片纠纷",
+      "额度纠纷",
+      "卡片问题"
+    ],
+    "text": "【公开演示样例·非现网】卡片或额度争议请先在 App「信用卡／卡片管理」查看披露；演示客服不能改额度、不能代办挂失。正式投诉请转人工；请勿发送完整卡号。",
+    "sensitivity": "public_sample"
+  },
+  {
+    "id": "complaint_service_sample_001",
+    "collection": "complaint_faq",
+    "title": "演示服务态度投诉引导",
+    "keywords": [
+      "服务态度",
+      "态度差",
+      "客服态度",
+      "服务差"
+    ],
+    "text": "【公开演示样例·非现网】对服务态度不满，更适合同事当面了解经过。演示客服不能下处罚决定或承诺一定处罚；请点转人工优先处理。",
+    "sensitivity": "public_sample"
+  }
+]

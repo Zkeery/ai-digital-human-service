@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "name": "AI数字人客服",
+  "ports": {
+    "backend": 8050,
+    "frontend": 3050
+  }
+}

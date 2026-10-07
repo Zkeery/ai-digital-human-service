@@ -1,0 +1,152 @@
+[
+  {
+    "id": "S01",
+    "scene": "账户",
+    "user": "查余额",
+    "spoken": "请打开 App 或网银，进入「账户」或「我的资产」，页面会显示账户余额。若无该入口或无法登录，请点「转人工」。您还想咨询「查流水」或「余额对不上」吗？可继续点下方选项。",
+    "graphic": "faq:account_balance",
+    "source": "account_dialogue",
+    "chips": [
+      "查余额",
+      "查流水",
+      "余额对不上",
+      "转人工"
+    ],
+    "suggest_transfer": true
+  },
+  {
+    "id": "S02",
+    "scene": "转账",
+    "user": "转账失败",
+    "spoken": "请按页面提示逐项核对：账户余额是否充足、收款账号与户名是否正确、是否超出限额。若仍提示失败，请保留失败截图与操作时间，点「转人工」。您还想咨询「对方没收到」或「多久能到」吗？可继续点下方选项。",
+    "graphic": "faq:transfer_fail",
+    "source": "transfer_dialogue",
+    "chips": [
+      "转账失败",
+      "对方没收到",
+      "多久能到",
+      "转人工"
+    ],
+    "suggest_transfer": true
+  },
+  {
+    "id": "S03",
+    "scene": "银行卡",
+    "user": "银行卡",
+    "spoken": "请问您要绑卡、解绑，还是挂失？请点下方选项。",
+    "graphic": "faq:card_clarify",
+    "source": "card_dialogue",
+    "chips": [
+      "怎么绑卡",
+      "解绑卡片",
+      "挂失引导",
+      "转人工"
+    ],
+    "suggest_transfer": false
+  },
+  {
+    "id": "S04",
+    "scene": "登录",
+    "user": "登录不上",
+    "spoken": "请核对：登录账号是否正确、网络是否正常、密码输入法是否切换正确；也可改用短信验证码登录。若仍无法进入，请点「转人工」。请勿将密码发送给客服。您还想咨询「忘记密码」或「收不到验证码」吗？可继续点下方选项。",
+    "graphic": "faq:auth_login",
+    "source": "auth_dialogue",
+    "chips": [
+      "登录不上",
+      "忘记密码",
+      "收不到验证码",
+      "转人工"
+    ],
+    "suggest_transfer": true
+  },
+  {
+    "id": "S05",
+    "scene": "信用卡",
+    "user": "信用卡",
+    "spoken": "请问您要查额度、看还款账单，还是申请提额？点下方选项即可。",
+    "graphic": "faq:credit_clarify",
+    "source": "credit_dialogue",
+    "chips": [
+      "查额度",
+      "还款与账单",
+      "申请提额",
+      "转人工"
+    ],
+    "suggest_transfer": false
+  },
+  {
+    "id": "S06",
+    "scene": "信用卡-额度",
+    "user": "信用卡 → 查额度",
+    "spoken": "请打开 App，依次进入「信用卡」→「卡片管理」或「我的额度」，页面会显示总额度与可用额度。若入口不在或页面报错，请点「转人工」。请勿发送完整卡号。您还想咨询「还款与账单」或「申请提额」吗？可继续点下方选项。",
+    "graphic": "faq:credit_limit",
+    "source": "credit_dialogue",
+    "chips": [
+      "查额度",
+      "还款与账单",
+      "申请提额",
+      "转人工"
+    ],
+    "suggest_transfer": true
+  },
+  {
+    "id": "S07",
+    "scene": "理财",
+    "user": "理财",
+    "spoken": "请问您要找说明书入口、了解风险等级怎么看，还是理解收益表述？点下方选项即可。",
+    "graphic": "faq:wealth_clarify",
+    "source": "wealth_dialogue",
+    "chips": [
+      "在哪看说明书",
+      "风险等级怎么看",
+      "收益怎么理解",
+      "转人工"
+    ],
+    "suggest_transfer": false
+  },
+  {
+    "id": "S08",
+    "scene": "理财-收益",
+    "user": "收益怎么理解",
+    "spoken": "说明书中的历史业绩、测算或业绩比较基准，均不等于对未来收益的承诺。具体条款以您打开的产品说明书原文为准。若需要核对某段表述，请点「转人工」。您还想咨询「在哪看说明书」或「风险等级怎么看」吗？可继续点下方选项。",
+    "graphic": "faq:wealth_yield",
+    "source": "wealth_dialogue",
+    "chips": [
+      "在哪看说明书",
+      "风险等级怎么看",
+      "收益怎么理解",
+      "转人工"
+    ],
+    "suggest_transfer": true
+  },
+  {
+    "id": "S09",
+    "scene": "网点",
+    "user": "网点",
+    "spoken": "请问您要查附近网点、看网点营业时间，还是客服在线时间？点下方选项即可。",
+    "graphic": "faq:branch_clarify",
+    "source": "branch_dialogue",
+    "chips": [
+      "怎么查网点",
+      "网点营业时间",
+      "客服在线时间",
+      "转人工"
+    ],
+    "suggest_transfer": false
+  },
+  {
+    "id": "S10",
+    "scene": "投诉",
+    "user": "我要投诉",
+    "spoken": "抱歉给您带来不便。请问是账户交易纠纷、卡片额度相关，还是服务态度？点下方选项即可。",
+    "graphic": "faq:complaint_clarify",
+    "source": "complaint_dialogue",
+    "chips": [
+      "账户交易纠纷",
+      "卡片额度相关",
+      "服务态度",
+      "转人工"
+    ],
+    "suggest_transfer": false
+  }
+]

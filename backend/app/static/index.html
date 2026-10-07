@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI数字人客服 · 验收联调页</title>
+  <style>
+    :root { --bg:#f6f3ee; --ink:#1c1917; --line:#d6d3d1; --accent:#0f766e; --danger:#b91c1c; --ok:#166534; }
+    * { box-sizing: border-box; }
+    body { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; margin:0; background:linear-gradient(160deg,#f6f3ee,#e7e5e4); color:var(--ink); }
+    main { max-width:720px; margin:0 auto; padding:24px 16px 56px; }
+    h1 { font-size:1.5rem; margin:0 0 6px; }
+    .tag { font-size:0.8rem; color:#57534e; margin-bottom:14px; }
+    section { background:rgba(255,255,255,0.85); border:1px solid var(--line); padding:16px; margin-bottom:14px; border-radius:8px; }
+    h2 { font-size:1rem; margin:0 0 10px; }
+    label { display:block; font-size:0.85rem; margin:10px 0 4px; }
+    input, textarea, select { width:100%; padding:10px; border:1px solid var(--line); background:#fff; font:inherit; border-radius:6px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    button {
+      min-height:44px; min-width:120px; padding:10px 14px; border:1px solid var(--accent);
+      background:var(--accent); color:#fff; cursor:pointer; font:inherit; border-radius:8px;
+    }
+    button:disabled { opacity:0.5; cursor:not-allowed; }
+    button.secondary { background:#fff; color:var(--accent); }
+    pre { white-space:pre-wrap; background:#1c1917; color:#fafaf9; padding:12px; font-size:0.8rem; overflow:auto; border-radius:6px; min-height:3em; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:8px; }
+    #banner { display:none; position:sticky; top:0; z-index:20; padding:12px 14px; border-radius:8px; margin-bottom:12px; font-size:0.95rem; font-weight:600; }
+    #banner.show { display:block; }
+    #banner.ok { background:#dcfce7; color:var(--ok); border:1px solid #86efac; }
+    #banner.err { background:#fee2e2; color:var(--danger); border:1px solid #fca5a5; }
+    .hint { font-size:0.85rem; color:#57534e; line-height:1.5; }
+    ol.hint { padding-left:1.2rem; margin:0; }
+    body.theme-ink { background:linear-gradient(160deg,#1c1917,#292524); color:#fafaf9; }
+    body.theme-ink section { background:rgba(41,37,36,0.92); border-color:#44403c; }
+    body.theme-ink input, body.theme-ink textarea, body.theme-ink select { background:#292524; color:#fafaf9; border-color:#57534e; }
+    body.theme-ink .hint, body.theme-ink .tag { color:#a8a29e; }
+    body.theme-ink button.secondary { background:#292524; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="tag">验收工具 · 第2阶段契约桩 · http://127.0.0.1:8050/</p>
+    <h1>AI数字人客服联调</h1>
+    <div id="banner" role="status"></div>
+
+    <section>
+      <h2>推荐顺序</h2>
+      <ol class="hint">
+        <li>① 创建会话 → 展示引导</li>
+        <li>初始化数字人（选形象）</li>
+        <li>② 发送话术 → 推流 → 开始展示</li>
+        <li>可选：降级／评价／转人工</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>当前配置</h2>
+      <div class="row">
+        <div>试点入口：<strong id="pilot">加载中…</strong></div>
+        <div>Agent：<strong id="agentState">-</strong></div>
+        <div>LLM mock：<strong id="llmMock">-</strong></div>
+        <div>Room 上限：<strong id="roomLimit">-</strong></div>
+      </div>
+      <div class="actions">
+        <button type="button" id="btnRefresh" class="secondary">刷新配置</button>
+        <button type="button" id="btnAgentOn" class="secondary">打开 Agent</button>
+        <button type="button" id="btnAgentOff" class="secondary">关闭 Agent</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>会话与对话</h2>
+      <label>入口 ID</label>
+      <input id="entryId" value="entry_pilot_001" />
+      <div class="actions">
+        <button type="button" id="btnCreate">① 创建会话</button>
+        <button type="button" id="btnGuide">展示引导</button>
+      </div>
+      <p class="hint">会话 ID：<code id="sessionId">尚未创建</code> · 状态：<span id="status">-</span></p>
+      <label>用户话术</label>
+      <textarea id="text" rows="3">你好，请问营业时间？</textarea>
+      <div class="actions">
+        <button type="button" id="btnSend">② 发送话术</button>
+        <button type="button" id="btnFallback" class="secondary">模拟 2s 降级</button>
+        <button type="button" id="btnTransfer" class="secondary">转人工</button>
+        <button type="button" id="btnEvents" class="secondary">刷新事件</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>数字人契约桩</h2>
+      <label>形象 d_profile_key</label>
+      <select id="profile">
+        <option value="001">001</option>
+        <option value="002">002</option>
+        <option value="003">003</option>
+        <option value="004">004</option>
+      </select>
+      <div class="actions">
+        <button type="button" id="btnInitDh">初始化数字人</button>
+        <button type="button" id="btnPush" class="secondary">推流最近应答</button>
+        <button type="button" id="btnStarted" class="secondary">开始展示</button>
+        <button type="button" id="btnCheckSync" class="secondary">检查超时降级</button>
+        <button type="button" id="btnRefreshDh" class="secondary">刷新 Room／指令</button>
+      </div>
+      <label>特殊指令</label>
+      <select id="specialCmd">
+        <option value="0002">0002 转人工播报</option>
+        <option value="0003">0003 排队</option>
+        <option value="0004">0004 异常</option>
+        <option value="0005">0005 账单卡片</option>
+      </select>
+      <div class="actions">
+        <button type="button" id="btnSpecial" class="secondary">推送特殊指令</button>
+      </div>
+      <p class="hint">room_id：<code id="roomId">-</code> · 最近推流指令 ID：<code id="lastCmd">-</code></p>
+      <pre id="dhInfo">（空）</pre>
+    </section>
+
+    <section>
+      <h2>会话历史</h2>
+      <div class="actions">
+        <button type="button" id="btnHistory" class="secondary">刷新历史</button>
+      </div>
+      <pre id="history">（空）</pre>
+    </section>
+
+    <section>
+      <h2>换肤试验</h2>
+      <div class="actions">
+        <button type="button" id="btnThemeDefault" class="secondary">默认浅色</button>
+        <button type="button" id="btnThemeInk" class="secondary">深色点缀</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>评价</h2>
+      <label>类型</label>
+      <select id="ratingType">
+        <option value="digital_human">digital_human</option>
+        <option value="human">human</option>
+        <option value="bot">bot</option>
+      </select>
+      <label>分数 1–5</label>
+      <input id="ratingScore" type="number" min="1" max="5" value="5" />
+      <label>备注</label>
+      <input id="ratingComment" value="清楚好懂" />
+      <div class="actions">
+        <button type="button" id="btnRate">提交评价</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>最近应答</h2>
+      <pre id="reply">（空）</pre>
+      <h2 style="margin-top:16px;">事件</h2>
+      <pre id="events">（空）</pre>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var banner = document.getElementById("banner");
+      var lastCommandDbId = null;
+
+      function show(msg, ok) {
+        banner.textContent = msg;
+        banner.className = "show " + (ok ? "ok" : "err");
+      }
+      function clearBanner() { banner.className = ""; banner.textContent = ""; }
+
+      async function api(path, opts) {
+        opts = opts || {};
+        var init = {
+          method: opts.method || "GET",
+          headers: { "Content-Type": "application/json" }
+        };
+        if (opts.body !== undefined) init.body = opts.body;
+        var res = await fetch("/api/v1" + path, init);
+        var data = await res.json().catch(function () { return {}; });
+        if (!res.ok) throw new Error((data.error && data.error.message) || ("请求失败 " + res.status));
+        return data;
+      }
+
+      function sessionId() {
+        var id = document.getElementById("sessionId").textContent.trim();
+        if (!id || id === "尚未创建") throw new Error("请先点「① 创建会话」");
+        return id;
+      }
+
+      async function refreshConfig() {
+        var c = await api("/config");
+        document.getElementById("pilot").textContent = c.pilot_entry_id;
+        document.getElementById("agentState").textContent = c.agent_enabled ? "开" : "关";
+        document.getElementById("llmMock").textContent = c.llm_mock ? "是" : "否";
+        document.getElementById("roomLimit").textContent = c.room_active_limit;
+        document.getElementById("entryId").value = c.pilot_entry_id;
+        show("配置已刷新", true);
+      }
+      async function setAgent(on) {
+        await api("/config", { method: "PUT", body: JSON.stringify({ agent_enabled: on }) });
+        await refreshConfig();
+        show(on ? "Agent 已打开" : "Agent 已关闭", true);
+      }
+      async function createSession() {
+        var s = await api("/sessions", { method: "POST", body: JSON.stringify({ entry_id: document.getElementById("entryId").value.trim() }) });
+        document.getElementById("sessionId").textContent = s.session_id;
+        document.getElementById("status").textContent = s.status;
+        document.getElementById("roomId").textContent = "-";
+        lastCommandDbId = null;
+        document.getElementById("lastCmd").textContent = "-";
+        show("会话已创建", true);
+        await loadEvents();
+        return s;
+      }
+      async function ensureSession() {
+        var id = document.getElementById("sessionId").textContent.trim();
+        if (!id || id === "尚未创建") {
+          show("尚未建会话，正在自动创建…", true);
+          await createSession();
+        }
+        return sessionId();
+      }
+      async function guide() {
+        var sid = await ensureSession();
+        show("正在展示引导…", true);
+        var r = await api("/sessions/" + sid + "/guide", { method: "POST", body: "{}" });
+        if (r.already_shown) {
+          show("引导已展示过（本会话只记一次，这是正常的）", true);
+        } else {
+          show("引导展示成功 ✓ 可继续「初始化数字人」", true);
+        }
+        await loadEvents();
+      }
+      async function sendMessage() {
+        var r = await api("/sessions/" + sessionId() + "/messages", { method: "POST", body: JSON.stringify({ text: document.getElementById("text").value }) });
+        document.getElementById("reply").textContent = JSON.stringify(r, null, 2);
+        show("已收到应答，可点「推流最近应答」", true);
+        await loadEvents();
+      }
+      async function fallback() {
+        await api("/sessions/" + sessionId() + "/fallback", { method: "POST", body: "{}" });
+        show("已记录 2s 降级", true);
+        await loadEvents();
+      }
+      async function transfer() {
+        var s = await api("/sessions/" + sessionId() + "/transfer", { method: "POST", body: "{}" });
+        document.getElementById("status").textContent = s.status;
+        show("已转人工，Room 应已关闭", true);
+        await refreshDh();
+        await loadEvents();
+      }
+      async function initDh() {
+        var r = await api("/sessions/" + sessionId() + "/digital-human/init", {
+          method: "POST",
+          body: JSON.stringify({ d_profile_key: document.getElementById("profile").value }),
+        });
+        document.getElementById("roomId").textContent = r.room_id;
+        if (r.welcome_command_id) {
+          lastCommandDbId = r.welcome_command_id;
+          document.getElementById("lastCmd").textContent = String(lastCommandDbId);
+        }
+        show(r.reused ? "已复用 Room" : "Room 已初始化（含欢迎语指令）", true);
+        await refreshDh();
+        await loadEvents();
+      }
+      async function push() {
+        var r = await api("/sessions/" + sessionId() + "/digital-human/push", { method: "POST", body: "{}" });
+        lastCommandDbId = r.command_db_id;
+        document.getElementById("lastCmd").textContent = String(lastCommandDbId);
+        show("已入推流队列，可点「开始展示」", true);
+        await refreshDh();
+        await loadEvents();
+      }
+      async function started() {
+        if (!lastCommandDbId) throw new Error("请先推流，获得指令 ID");
+        await api("/sessions/" + sessionId() + "/digital-human/stream-started", {
+          method: "POST",
+          body: JSON.stringify({ command_db_id: lastCommandDbId }),
+        });
+        show("已标记开始展示", true);
+        await refreshDh();
+        await loadEvents();
+      }
+      async function refreshDh() {
+        var info = await api("/sessions/" + sessionId() + "/digital-human");
+        if (info.room) document.getElementById("roomId").textContent = info.room.room_id + "（" + info.room.status + "）";
+        document.getElementById("dhInfo").textContent = JSON.stringify(info, null, 2);
+      }
+      async function checkSync() {
+        var r = await api("/sessions/" + sessionId() + "/digital-human/check-sync", { method: "POST", body: "{}" });
+        if (r.fallback) show("已自动记入超时降级", true);
+        else if (r.reason === "not_expired") show("尚未到 hold 时间（已过 " + r.elapsed_ms + "ms／需 " + r.hold_ms + "ms）", true);
+        else show("无需降级：" + (r.reason || ""), true);
+        await loadEvents();
+        await refreshDh();
+      }
+      async function pushSpecial() {
+        var r = await api("/sessions/" + sessionId() + "/digital-human/special", {
+          method: "POST",
+          body: JSON.stringify({ command_id: document.getElementById("specialCmd").value }),
+        });
+        lastCommandDbId = r.command_db_id;
+        document.getElementById("lastCmd").textContent = String(lastCommandDbId);
+        show("特殊指令已入队：" + r.command_id, true);
+        await refreshDh();
+        await loadEvents();
+      }
+      async function loadHistory() {
+        var r = await api("/sessions/" + sessionId() + "/history");
+        document.getElementById("history").textContent = JSON.stringify(r.items, null, 2);
+        show("历史已刷新", true);
+      }
+      function applyTheme(id) {
+        document.body.classList.remove("theme-ink");
+        if (id === "ink") document.body.classList.add("theme-ink");
+        try { localStorage.setItem("dh_theme", id); } catch (e) {}
+        show(id === "ink" ? "已切换深色点缀" : "已切换默认浅色", true);
+      }
+      async function rate() {
+        await api("/sessions/" + sessionId() + "/rating", {
+          method: "POST",
+          body: JSON.stringify({
+            rating_type: document.getElementById("ratingType").value,
+            score: Number(document.getElementById("ratingScore").value),
+            comment: document.getElementById("ratingComment").value,
+          }),
+        });
+        show("评价已提交", true);
+        await loadEvents();
+      }
+      async function loadEvents() {
+        var list = await api("/sessions/" + sessionId() + "/events");
+        document.getElementById("events").textContent = JSON.stringify(list, null, 2);
+      }
+
+      function bind(id, fn) {
+        var el = document.getElementById(id);
+        el.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          clearBanner();
+          el.disabled = true;
+          Promise.resolve().then(fn).catch(function (e) { show(e.message || String(e), false); }).finally(function () { el.disabled = false; });
+        });
+      }
+
+      bind("btnRefresh", refreshConfig);
+      bind("btnAgentOn", function () { return setAgent(true); });
+      bind("btnAgentOff", function () { return setAgent(false); });
+      bind("btnCreate", createSession);
+      bind("btnGuide", guide);
+      bind("btnSend", sendMessage);
+      bind("btnFallback", fallback);
+      bind("btnTransfer", transfer);
+      bind("btnEvents", loadEvents);
+      bind("btnInitDh", initDh);
+      bind("btnPush", push);
+      bind("btnStarted", started);
+      bind("btnCheckSync", checkSync);
+      bind("btnRefreshDh", refreshDh);
+      bind("btnSpecial", pushSpecial);
+      bind("btnHistory", loadHistory);
+      bind("btnThemeDefault", function () { applyTheme("default"); });
+      bind("btnThemeInk", function () { applyTheme("ink"); });
+      bind("btnRate", rate);
+
+      try {
+        var saved = localStorage.getItem("dh_theme") || "default";
+        applyTheme(saved);
+      } catch (e) {}
+
+      refreshConfig().catch(function (e) {
+        show("页面加载失败：" + e.message + "。请先 ./start.sh", false);
+      });
+    })();
+  </script>
+</body>
+</html>

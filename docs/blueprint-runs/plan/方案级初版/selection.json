@@ -1,0 +1,181 @@
+{
+  "features": {
+    "destructive_ops": {
+      "value": "yes",
+      "evidence": "转人工、发送客户消息、写入会话标记"
+    },
+    "audit_needed": {
+      "value": "yes",
+      "evidence": "客服会话审计、评价、分流开关需可追溯"
+    },
+    "multi_step": {
+      "value": "yes",
+      "evidence": "唤醒→播报→多轮问答→转人工为固定多步"
+    },
+    "context_heavy": {
+      "value": "no",
+      "evidence": "不并行探索子任务"
+    },
+    "large_knowledge": {
+      "value": "later",
+      "evidence": "FAQ/口播知识一期沿用既有配置，RAG后置"
+    },
+    "long_sessions": {
+      "value": "later",
+      "evidence": "客服会话可长，压缩二期"
+    },
+    "cross_session_memory": {
+      "value": "no",
+      "evidence": "一期不跨会话记忆用户偏好"
+    },
+    "persistent_goals": {
+      "value": "no",
+      "evidence": "单次咨询闭环，非长期目标系统"
+    },
+    "slow_operations": {
+      "value": "yes",
+      "evidence": "TTS/CV渲染与RTC推流为慢操作"
+    },
+    "scheduled": {
+      "value": "no",
+      "evidence": "无定时自治触发"
+    },
+    "parallel_isolated": {
+      "value": "no",
+      "evidence": "无多Agent团队"
+    },
+    "external_ecosystem": {
+      "value": "no",
+      "evidence": "无MCP生态需求"
+    },
+    "fixed_orchestration": {
+      "value": "yes",
+      "evidence": "jtalk主链路固定；数字人为呈现层，整体架构可不变"
+    },
+    "auto_completion": {
+      "value": "no",
+      "evidence": "结束由转人工/用户离开/业务规则判定"
+    }
+  },
+  "decisions": [
+    {
+      "id": "s01",
+      "name": "Agent Loop",
+      "decision": "必选",
+      "reason": "一切基础：循环 + 工具（一切基础，恒选）",
+      "feature": ""
+    },
+    {
+      "id": "s02",
+      "name": "工具系统",
+      "decision": "必选",
+      "reason": "需要调用外部系统/API/数据源（一切基础，恒选）",
+      "feature": ""
+    },
+    {
+      "id": "s03",
+      "name": "权限系统",
+      "decision": "必选",
+      "reason": "转人工、发送客户消息、写入会话标记",
+      "feature": "destructive_ops"
+    },
+    {
+      "id": "s04",
+      "name": "钩子系统",
+      "decision": "必选",
+      "reason": "客服会话审计、评价、分流开关需可追溯",
+      "feature": "audit_needed"
+    },
+    {
+      "id": "s05",
+      "name": "任务规划",
+      "decision": "必选",
+      "reason": "唤醒→播报→多轮问答→转人工为固定多步",
+      "feature": "multi_step"
+    },
+    {
+      "id": "s06",
+      "name": "子 Agent",
+      "decision": "放弃",
+      "reason": "不并行探索子任务",
+      "feature": "context_heavy"
+    },
+    {
+      "id": "s07",
+      "name": "技能加载",
+      "decision": "二期",
+      "reason": "FAQ/口播知识一期沿用既有配置，RAG后置",
+      "feature": "large_knowledge"
+    },
+    {
+      "id": "s08",
+      "name": "上下文压缩",
+      "decision": "二期",
+      "reason": "客服会话可长，压缩二期",
+      "feature": "long_sessions"
+    },
+    {
+      "id": "s09",
+      "name": "记忆系统",
+      "decision": "放弃",
+      "reason": "一期不跨会话记忆用户偏好",
+      "feature": "cross_session_memory"
+    },
+    {
+      "id": "s10",
+      "name": "任务系统",
+      "decision": "放弃",
+      "reason": "单次咨询闭环，非长期目标系统",
+      "feature": "persistent_goals"
+    },
+    {
+      "id": "s11",
+      "name": "后台任务",
+      "decision": "必选",
+      "reason": "TTS/CV渲染与RTC推流为慢操作",
+      "feature": "slow_operations"
+    },
+    {
+      "id": "s12",
+      "name": "定时调度",
+      "decision": "放弃",
+      "reason": "无定时自治触发",
+      "feature": "scheduled"
+    },
+    {
+      "id": "s13",
+      "name": "Agent 团队",
+      "decision": "放弃",
+      "reason": "无多Agent团队",
+      "feature": "parallel_isolated"
+    },
+    {
+      "id": "s14",
+      "name": "MCP 插件",
+      "decision": "放弃",
+      "reason": "无MCP生态需求",
+      "feature": "external_ecosystem"
+    },
+    {
+      "id": "s15",
+      "name": "集成 Harness",
+      "decision": "必选",
+      "reason": "第一版已选 5 个可选组件（s03, s04, s05, s11, s16），需归一到单一循环",
+      "feature": ""
+    },
+    {
+      "id": "s16",
+      "name": "工作流运行时",
+      "decision": "必选",
+      "reason": "jtalk主链路固定；数字人为呈现层，整体架构可不变",
+      "feature": "fixed_orchestration"
+    },
+    {
+      "id": "s17",
+      "name": "目标闭环",
+      "decision": "放弃",
+      "reason": "结束由转人工/用户离开/业务规则判定",
+      "feature": "auto_completion"
+    }
+  ]
+}
